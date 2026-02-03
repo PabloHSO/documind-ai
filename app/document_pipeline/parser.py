@@ -19,7 +19,7 @@ class DocumentParser:
     Este módulo faz parte da document_pipeline e prepara
     os dados para:
     - Chunking
-    - Embeddings
+    - Embeddings 
     - Agentes de IA
     """
 

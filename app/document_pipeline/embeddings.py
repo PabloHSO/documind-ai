@@ -64,3 +64,4 @@ class EmbeddingsGenerator:
         
         return enriched_chunks
     
+ 

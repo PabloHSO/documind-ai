@@ -20,7 +20,7 @@ class TextChunker:
     - RAG
     - Agentes de IA (QA, resumo, insights)
     """
-
+ 
     def __init__(
         self, 
         chunk_size: int = 800, 
