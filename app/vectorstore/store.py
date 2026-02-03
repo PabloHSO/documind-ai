@@ -10,7 +10,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-class InMemoryVectorStore:
+class VectorStore:
     """
     Vetor store simples em memória para MVP.
 
