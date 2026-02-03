@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 class LLMService:
     """
-    Camada de abstração para modelos de linguagem.
+    Camada de abstração para modelos de linguagem. 
 
     Responsabilidades:
     - Gerar embeddings
