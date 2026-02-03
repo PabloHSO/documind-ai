@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+
+# Document pipeline
+docling
+
+# Vector & NLP
+numpy
+
+# Optional (preparação futura)
+openai
+huggingface-hub
