@@ -36,7 +36,7 @@ INSTRUÇÕES:
 - Destaque os principais temas e conclusões
 - Use linguagem executiva
 - Seja conciso, mas informativo
-- Caso existam dados importantes, mencione-os
+- Caso existam dados importantes, mencione-os 
 - Não invente informações que não estejam no contexto
 
 FORMATO DE SAÍDA:

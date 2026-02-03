@@ -18,7 +18,7 @@ class QAAgent(BaseAgent):
             "com base estritra em documentos fornecidos. "
             "Não utilize conhecimento externo."
             "Se a resposxta não estiver presenmte no contexto, "
-            "declare explicitamente que a informação não foi encotrada"
+            "declare explicitamente que a informação não foi encotrada" 
         )
     
     def build_prompt(self, query: str, context: str) -> str:

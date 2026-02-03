@@ -17,7 +17,7 @@ class InsightAgente(BaseAgent):
             "corporativos e técnicos. Seu objetivo é extrair insights estratégicos, "
             "identificar riscos, oportunidades e recomendações práticas, "
             "sempre com base estrita no conteúdo fornecido."
-        )
+        ) 
     
     def build_prompt(self, context: str) -> str:
         """

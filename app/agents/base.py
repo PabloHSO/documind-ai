@@ -12,7 +12,7 @@ from app.vectorstore.store import InMemoryVectorStore
 
 class BaseAgent(ABC):
     """
-    Classe base para todos os agentes do DocuMind AI.
+    Classe base para todos os agentes do DocuMind AI. 
 
     Responsabilidades:
     - Executar fluxo RAG
