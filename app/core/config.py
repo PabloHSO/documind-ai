@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     APP_NAME: str = "DocuMind AI"
     ENVIRONMENT: str = Field(default="development")
     LOG_LEVEL: str = Field(default="INFO")
-
+ 
     # ====== OpenAI =======
     OPENAI_API_KEY: str 
     OPEN_AI_MODEL: str = Field(default="gpt-4o-mini")
