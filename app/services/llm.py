@@ -12,6 +12,21 @@ from openai import OpenAI
 
 logger = logging.getLogger(__name__)
 
+# Fará a abstração clara de LLMs usados na aplicação
+# Suporte inicial a OpenAI
+# Separação entre: geração de embeddings e geração de texto
+# Preparação para os agentes
+# Fácil de troca para HuggingFace, etc.
+
+from typing import List, Optional
+import logging
+from sentence_transformers import SentenceTransformer
+from transformers import pipeline
+from app.core.config import get_settings
+
+
+logger = logging.getLogger(__name__)
+
 class LLMService:
     """
     Camada de abstração para modelos de linguagem. 

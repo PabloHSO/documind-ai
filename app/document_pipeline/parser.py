@@ -7,19 +7,17 @@ from typing import Dict, Any
 import logging
 
 from docling.document_converter import DocumentConverter
-from docling.datamodel.document import Document
 
 logger = logging.getLogger(__name__)
 
 class DocumentParser:
     """
-    Resposável por convereter documentos corporativvos (PDF, DOCX, TXT, etc.)
-    em textos estruturados utilizando Docling
+    Responsável por converter documentos corporativos (PDF, DOCX, TXT, etc.)
+    em texto estruturado utilizando Docling.
 
-    Este módulo faz parte da document_pipeline e prepara
-    os dados para:
+    Saída normalizada para:
     - Chunking
-    - Embeddings 
+    - Embeddings
     - Agentes de IA
     """
 
@@ -29,31 +27,27 @@ class DocumentParser:
     def parse(self, file_path: Path) -> Dict[str, Any]:
         """
         Converte um documento em estrutura textual normalizada.
-
-        Args:
-            file_path (str): Caminho do arquivo
-
-        Returns:
-            Dict[str, Any]: Documento estruturado
         """
         path = Path(file_path)
 
         if not path.exists():
             raise FileNotFoundError(f"Arquivo não encontrado: {file_path}")
-        
+
         logger.info(f"Convertendo documento: {path.name}")
 
         try:
-            result = self.converter.convert(path) # Converte o documento
-            document: Document = result.document # Extrai o documento convertido
+            result = self.converter.convert(path)
+
+            # O document vem dentro do result
+            document = result.document
 
             return self._normalize_document(document, path)
-        
+
         except Exception as e:
-            logger.error(f"Erro ao converter o documento {path.name}: {e}")
+            logger.exception(f"Erro ao converter o documento {path.name}")
             raise e
-        
-    def _normalize_document(self, document: Document, path: Path) -> Dict[str, Any]:
+
+    def _normalize_document(self, document, path: Path) -> Dict[str, Any]:
         """
         Normaliza a saída do Docling em um formato
         consistente e fácil de consumir por IA.
@@ -61,10 +55,13 @@ class DocumentParser:
 
         pages = []
 
-        for page in document.pages:
+        # A API atual do Docling expõe pages dessa forma
+        for idx, page in enumerate(document.pages):
+            text = page.text if hasattr(page, "text") else ""
+
             pages.append({
-                "page_number": page.page_no,
-                "text": page.text.strip() if page.text else "",
+                "page_number": idx + 1,
+                "text": text.strip() if text else "",
             })
 
         full_text = "\n".join(p["text"] for p in pages if p["text"])
