@@ -7,8 +7,8 @@
 from abc import ABC, abstractmethod # Importa ABC para criar uma classe abstrata
 from typing import List, Dict, Any, Optional
 
-from app.services.llm_service import LLMService
-from app.vectorstore.store import InMemoryVectorStore 
+from app.services.llm import LLMService
+from app.vectorstore.store import VectorStore 
 
 class BaseAgent(ABC):
     """
@@ -24,7 +24,7 @@ class BaseAgent(ABC):
     def __init__(
         self,
         llm_service: LLMService,
-        vector_store: InMemoryVectorStore,
+        vector_store: VectorStore,
         top_k: int = 5
     ):
         self.llm_service = llm_service

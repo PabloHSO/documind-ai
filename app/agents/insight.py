@@ -5,7 +5,7 @@
 
 from app.agents.base import BaseAgent
 
-class InsightAgente(BaseAgent):
+class InsightAgent(BaseAgent):
     """
     Agente responsável por extrair insights estratégicos a partir de documentos.
     Ideal para análises executivas, técnicas e corporativas.
