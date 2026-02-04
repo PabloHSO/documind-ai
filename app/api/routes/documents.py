@@ -2,13 +2,12 @@
 # Recebe documento seguindo fluxo abaixo.
 # Conecta: Parser -> Chunker -> embeddings -> vectorstore -> agentes
 
-from fastapi import APIRouter, UploadFile, File, HTTPExcepiton
+from fastapi import APIRouter, UploadFile, File, HTTPException
 from typing import Dict
 
 from app.document_pipeline.parser import DocumentParser
 from app.document_pipeline.chunker import TextChunker
 from app.document_pipeline.embeddings import EmbeddingsGenerator
-from app.document_pipeline.parser import DocumentParser
 from app.vectorstore.store import VectorStore
 
 router = APIRouter(prefix="/documents", tags=["Documents"])
@@ -25,7 +24,7 @@ async def upload_document(file: UploadFile = File(...)):
     """
 
     if not file.filename:
-        raise HTTPExcepiton(status_code=400, detail="Arquivo Inválido")
+        raise HTTPException(status_code=400, detail="Arquivo Inválido")
     
     try:
         # 1. Ler conteúdo do arquivo
@@ -40,7 +39,7 @@ async def upload_document(file: UploadFile = File(...)):
         chunks = chunker.split(text)
 
         if not chunks:
-            raise HTTPExcepiton(
+            raise HTTPException(
                 status_code=400,
                 detail = "Não foi possível gerar chunks a partir do documento"
             )
@@ -64,7 +63,7 @@ async def upload_document(file: UploadFile = File(...)):
         }
     
     except Exception as e:
-        raise HTTPExcepiton(
+        raise HTTPException(
             status_code = 500,
             detail = f"Erro ao processar documento: {str(e)}"
         )
